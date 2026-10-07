@@ -37,6 +37,11 @@ GitHub Actions validates and publishes every `server.json` to the official MCP
 Registry with GitHub OIDC on changes to `main`. Existing immutable versions are
 skipped; metadata changes use a new semantic version.
 
+Push events on this repository do not start workflow runs (verified 2026-10-07
+on two separate pushes, with and without a `paths` filter), so publishing has
+to be started with `workflow_dispatch` until that is understood. A weekly
+`schedule` run is configured as a backstop.
+
 GitHub OIDC only grants the `io.github.<repo-owner>` namespace, so the server
 names must match whoever owns this repository. This repository moved from
 `brenton-keller` to `bkeller-research` on 2026-09-21; the names were updated to
