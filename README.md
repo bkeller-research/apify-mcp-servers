@@ -37,14 +37,24 @@ GitHub Actions validates and publishes every `server.json` to the official MCP
 Registry with GitHub OIDC on changes to `main`. Existing immutable versions are
 skipped; metadata changes use a new semantic version.
 
-Push events on this repository do not start workflow runs (verified 2026-10-07
-on two separate pushes, with and without a `paths` filter), so publishing has
-to be started with `workflow_dispatch` until that is understood. A weekly
-`schedule` run is configured as a backstop.
+A weekly `schedule` run acts as a heartbeat, so a pipeline that has stopped
+working turns red without needing a commit to notice.
 
 GitHub OIDC only grants the `io.github.<repo-owner>` namespace, so the server
 names must match whoever owns this repository. This repository moved from
-`brenton-keller` to `bkeller-research` on 2026-09-21; the names were updated to
-match on 2026-10-07, after every publish had been failing with HTTP 403 in the
-interim. Five `io.github.brenton-keller/*` entries from before the move are
-still `active` in the registry and are not served by this repository.
+`brenton-keller` to `bkeller-research` on 2026-09-21 while the names still said
+`brenton-keller`, and every publish failed with HTTP 403 for 16 days without a
+single red run, because push events were not starting runs at all. The names
+were corrected on 2026-10-07. A preflight step now compares every server name
+against `github.repository_owner` and fails with a readable message, so the
+next ownership change cannot repeat this silently.
+
+### The 2026-10-07 namespace migration
+
+The registry enforces globally-unique remote URLs, so the pre-move
+`io.github.brenton-keller/*` entries held the `mcp.apify.com` URLs the new names
+needed and blocked them with HTTP 400. Setting those entries to `deprecated` did
+**not** release the URLs; only `deleted` did. All seven old versions across the
+five servers were therefore deleted, and the five
+`io.github.bkeller-research/*` servers were published in their place. The old
+names no longer resolve.
