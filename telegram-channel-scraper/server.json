@@ -1,6 +1,6 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-  "name": "io.github.brenton-keller/telegram-channel-scraper",
+  "name": "io.github.bkeller-research/telegram-channel-scraper",
   "title": "Telegram Channel Scraper",
   "description": "Public Telegram channel posts, views, reactions, media and subscriber counts. No login needed.",
   "version": "0.1.0",

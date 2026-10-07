@@ -1,6 +1,6 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-  "name": "io.github.brenton-keller/pdf-text-table-ocr-extractor",
+  "name": "io.github.bkeller-research/pdf-text-table-ocr-extractor",
   "title": "PDF Text, Table and OCR Extractor",
   "description": "PDF URLs to per-page text, tables as rows, Markdown, metadata and OCR for scanned pages.",
   "version": "0.1.0",

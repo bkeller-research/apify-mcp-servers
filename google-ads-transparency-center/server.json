@@ -1,6 +1,6 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-  "name": "io.github.brenton-keller/google-ads-transparency-center",
+  "name": "io.github.bkeller-research/google-ads-transparency-center",
   "title": "Google Ads Transparency Center Scraper",
   "description": "Google Ads by domain or brand: creatives, formats, dates; or bulk-check which domains advertise.",
   "version": "0.1.2",

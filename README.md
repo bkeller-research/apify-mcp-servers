@@ -3,7 +3,7 @@
 Five data tools published by `brenton8907` on Apify are available as hosted,
 streamable-HTTP MCP servers. Each directory contains the corresponding
 `server.json` for the [official MCP Registry](https://registry.modelcontextprotocol.io/)
-under the `io.github.brenton-keller` namespace.
+under the `io.github.bkeller-research` namespace.
 
 | Server | What it returns | Apify page |
 |---|---|---|
@@ -36,3 +36,10 @@ before running it.
 GitHub Actions validates and publishes every `server.json` to the official MCP
 Registry with GitHub OIDC on changes to `main`. Existing immutable versions are
 skipped; metadata changes use a new semantic version.
+
+GitHub OIDC only grants the `io.github.<repo-owner>` namespace, so the server
+names must match whoever owns this repository. This repository moved from
+`brenton-keller` to `bkeller-research` on 2026-09-21; the names were updated to
+match on 2026-10-07, after every publish had been failing with HTTP 403 in the
+interim. Five `io.github.brenton-keller/*` entries from before the move are
+still `active` in the registry and are not served by this repository.

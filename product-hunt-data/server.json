@@ -1,6 +1,6 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-  "name": "io.github.brenton-keller/product-hunt-data",
+  "name": "io.github.bkeller-research/product-hunt-data",
   "title": "Product Hunt Data (Official API)",
   "description": "Product Hunt launches, votes, makers, comments via the official API. Pay per result.",
   "version": "0.1.0",
