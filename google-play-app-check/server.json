@@ -1,0 +1,14 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.bkeller-research/google-play-app-check",
+  "title": "Google Play App Check",
+  "description": "Company domains to Android app data: verified developer match, installs, rating, last update.",
+  "version": "0.1.0",
+  "websiteUrl": "https://apify.com/brenton8907/google-play-app-check",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://mcp.apify.com/?tools=brenton8907/google-play-app-check"
+    }
+  ]
+}

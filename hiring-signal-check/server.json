@@ -1,0 +1,14 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.bkeller-research/hiring-signal-check",
+  "title": "Hiring Signal Check",
+  "description": "Is a company hiring? Domains to open roles, ATS, departments and seniority from public job boards.",
+  "version": "0.1.0",
+  "websiteUrl": "https://apify.com/brenton8907/hiring-signal-check",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://mcp.apify.com/?tools=brenton8907/hiring-signal-check"
+    }
+  ]
+}

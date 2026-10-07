@@ -1,6 +1,6 @@
 # Apify-hosted remote MCP servers
 
-Five data tools published by `brenton8907` on Apify are available as hosted,
+Nine data tools published by `brenton8907` on Apify are available as hosted,
 streamable-HTTP MCP servers. Each directory contains the corresponding
 `server.json` for the [official MCP Registry](https://registry.modelcontextprotocol.io/)
 under the `io.github.bkeller-research` namespace.
@@ -12,6 +12,10 @@ under the `io.github.bkeller-research` namespace.
 | Prediction Markets Data | Kalshi and Polymarket prices, orderbooks, trades and settled results | [Open](https://apify.com/brenton8907/prediction-markets-data) |
 | Product Hunt Data | Launches, votes, makers, topics and comments from the official API | [Open](https://apify.com/brenton8907/product-hunt-data) |
 | Telegram Channel Scraper | Public channel posts, views, reactions, media and subscriber counts | [Open](https://apify.com/brenton8907/telegram-channel-scraper) |
+| Google Play App Check | Whether a company domain has an Android app: verified developer, installs, rating, last update | [Open](https://apify.com/brenton8907/google-play-app-check) |
+| Hiring Signal Check | Whether a company is hiring: ATS, open roles, departments and seniority from public job boards | [Open](https://apify.com/brenton8907/hiring-signal-check) |
+| Domain Intelligence Check | Email provider, DMARC/SPF/DKIM, WHOIS age, SSL, hosting and CDN per domain | [Open](https://apify.com/brenton8907/domain-intel-check) |
+| Tech Stack Check | CMS, analytics, chat, payments and ad pixels per site, with evidence and tracking IDs | [Open](https://apify.com/brenton8907/tech-stack-check) |
 
 ## Connect
 
