@@ -1,8 +1,16 @@
 name: Publish to MCP Registry
 on:
+  # No paths filter: commit 53ac65e changed five */server.json files and still
+  # produced no run, so the narrow filter could not be trusted. Publishing is
+  # idempotent (an existing name+version is skipped), so running on every push
+  # to main costs a minute and removes a silent-failure mode.
   push:
     branches: [main]
-    paths: ["*/server.json", ".github/workflows/publish-mcp.yml"]
+  # Heartbeat. The repository owner moved on 2026-09-21 and broke publishing for
+  # 16 days without a single red run, because nothing ran at all. A weekly run
+  # means a dead pipeline shows up as a failure even with no commits.
+  schedule:
+    - cron: "17 6 * * 1"
   workflow_dispatch:
 jobs:
   publish:
@@ -18,17 +26,30 @@ jobs:
       - name: Authenticate to MCP Registry (GitHub OIDC)
         run: ./mcp-publisher login github-oidc
       - name: Validate server.json against registry limits
+        env:
+          REPO_OWNER: ${{ github.repository_owner }}
         run: |
           # The registry rejects description > 100 chars with a 422 that is easy to miss in a green-ish log.
+          # GitHub OIDC only grants io.github.<repo-owner>/*, so a server name that
+          # disagrees with the owner can never publish. Catch it here with a readable
+          # message instead of five 403s from the publish step.
           python3 - <<'EOF'
-          import json, glob, sys
+          import json, glob, os, sys
+          owner = os.environ["REPO_OWNER"]
+          expected = f"io.github.{owner}/"
           bad = []
           for f in sorted(glob.glob('*/server.json')):
               d = json.load(open(f))
               n = len(d.get('description', ''))
-              print(f"{n:4}  {f}")
+              name = d.get('name', '')
+              print(f"{n:4}  {name}")
               if n > 100:
                   bad.append(f"{f}: description is {n} chars, registry limit is 100")
+              if not name.startswith(expected):
+                  bad.append(
+                      f"{f}: name is {name!r} but this repository is owned by {owner!r}, "
+                      f"so OIDC can only publish {expected}*. Rename the server or move the repo."
+                  )
           if bad:
               sys.exit("\n".join(bad))
           EOF
